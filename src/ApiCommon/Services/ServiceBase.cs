@@ -13,6 +13,7 @@ namespace WahineKai.Common.Api.Services
     using WahineKai.Common;
     using WahineKai.MemberDatabase.Dto;
     using WahineKai.MemberDatabase.Dto.Contracts;
+    using WahineKai.MemberDatabase.Dto.Enums;
     using WahineKai.MemberDatabase.Dto.Models;
     using WahineKai.MemberDatabase.Dto.Properties;
 
@@ -74,7 +75,8 @@ namespace WahineKai.Common.Api.Services
 
             Ensure.IsNotNull(() => user);
             Ensure.IsTrue(() => user.Admin);
-            Ensure.IsTrue(() => user.Active);
+            Ensure.IsFalse(() => user.Status == MemberStatus.Pending);
+            Ensure.IsFalse(() => user.Status == MemberStatus.Terminated);
         }
 
         /// <summary>
