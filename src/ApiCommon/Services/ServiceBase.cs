@@ -22,7 +22,7 @@ namespace WahineKai.Common.Api.Services
     /// </summary>
     public abstract class ServiceBase
     {
-        private readonly IUserRepository<AdminUser> userRepository;
+        private readonly IUserRepository userRepository;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ServiceBase"/> class.
@@ -39,7 +39,7 @@ namespace WahineKai.Common.Api.Services
             // Build cosmos configuration
             var cosmosConfiguration = CosmosConfiguration.BuildFromConfiguration(this.Configuration);
 
-            this.userRepository = new CosmosUserRepository<AdminUser>(cosmosConfiguration, loggerFactory);
+            this.userRepository = new CosmosUserRepository(cosmosConfiguration, loggerFactory);
 
             this.Logger.LogTrace("Construction of ServiceBase complete");
         }
